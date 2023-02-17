@@ -1,0 +1,48 @@
+.container{
+    height: fit-content;
+    width: 270px;
+    background-color: rgba(186, 255, 186, 0.786);
+    margin: 10px;
+}
+.comName{
+    color: black;
+    text-align: center;
+    font-size: 20px;
+}
+.detailsContainer{
+    background-color: aliceblue;
+    border: 1px solid white;
+    border-radius: 10%;
+    height: fit-content;
+    width: 230px;
+    align-self: center;
+    padding-left: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.data{
+    font-size: 15px;    
+}
+
+.dataNotFake{
+    font-size: 17px;
+    color: rgb(14, 150, 104);
+    text-align: center;
+    
+    margin-left: -10px;
+}
+.dataFake{
+    font-size: 17px;
+    color: rgb(150, 14, 14);
+    text-align: center;
+    
+    margin-left: -10px;
+}
+.accuracy{
+    font-size: 13px;
+    color: rgb(14, 150, 84);
+    margin-top: -15px;
+    text-align: right;
+    margin-right: 10px;
+    margin-left: -10px;
+}
