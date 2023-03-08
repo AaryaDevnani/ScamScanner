@@ -1,10 +1,22 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 import json
 import pickle
 import pandas as pd
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+
+def _build_cors_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    return response
+
+def _corsify_actual_response(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 
 @app.route('/ping', methods=['GET'])
 def index():
@@ -24,7 +36,7 @@ def twtbot():
     print(Prediction)
     return jsonify({"Prediction": Prediction})
 
-@app.route('/ig-bot', methods=['POST'])
+@app.route('/ig-bot', methods=['POST','OPTIONS'])
 def igbot():
     if request.method == "POST":
         obj = json.loads(request.data)
@@ -35,8 +47,10 @@ def igbot():
             Prediction = "Bot Account"
         elif output == 0:
             Prediction = "Human"
-    print(Prediction)
-    return jsonify({"Prediction": Prediction})
+        print(Prediction)
+        return _corsify_actual_response(jsonify({"Prediction": Prediction}))
+    elif request.method == "OPTIONS":
+        return _build_cors_preflight_response()
 
 if __name__ == '__main__':
     with open('model_pkl', 'rb') as f:
