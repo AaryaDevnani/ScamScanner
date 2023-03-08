@@ -20,6 +20,17 @@
     margin-left: 10px;
     margin-bottom: 20px;
 }
+.detailsContainer2{
+    background-color: aliceblue;
+    border: 1px solid white;
+    border-radius: 10%;
+    height: fit-content;
+    width: 230px;
+    align-self: center;
+    padding-left: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
 .data{
     font-size: 15px;    
 }
@@ -28,14 +39,18 @@
     font-size: 17px;
     color: rgb(14, 150, 104);
     text-align: center;
-    
     margin-left: -10px;
 }
 .dataFake{
     font-size: 17px;
     color: rgb(150, 14, 14);
-    text-align: center;
-    
+    text-align: center;   
+    margin-left: -10px;
+}
+.dataFake2{
+    font-size: 16px;
+    color: rgb(150, 14, 14);
+    text-align: center;   
     margin-left: -10px;
 }
 .accuracy{
@@ -45,4 +60,30 @@
     text-align: right;
     margin-right: 10px;
     margin-left: -10px;
+}
+.toggle1{
+    font-size: 17px;
+    width: 124px;
+    height: 35px;
+    background-color: rgb(115, 172, 115);
+    border-color: rgb(115, 172, 115);
+    border-radius: 20px;
+    border-style: none;
+}
+.toggle2{
+    font-size: 17px;
+    width: 124px;
+    height: 35px;
+    border: none;
+    background-color: rgba(186, 255, 186, 0.786);
+    border-radius: 20px;
+}
+.toggles{
+    border: 1px solid rgb(115, 172, 115);
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#tot2{
+    display: none; 
 }
