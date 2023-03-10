@@ -15,3 +15,8 @@ btn2.onclick = function () {
     btn2.style.cssText = "background-color: rgb(115, 172, 115); border-color: rgb(115, 172, 115); border-style: none;";
     btn1.style.cssText = "border: none; background-color: rgba(186, 255, 186, 0.786);";
 };
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    //Prediction comes here
+    console.log(message)
+    return true;
+})
