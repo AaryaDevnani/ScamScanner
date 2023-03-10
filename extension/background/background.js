@@ -69,7 +69,15 @@ chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
       };
       console.log(userData)
       let prediction = await accountDetectionAPI(userData)
-      chrome.runtime.sendMessage(prediction);
+      console.log(prediction)
+      chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+        //Prediction comes here
+        if(message == "Loaded"){
+
+          sendResponse(prediction)
+        }
+        // return true;
+    })
     }
   }
 });
