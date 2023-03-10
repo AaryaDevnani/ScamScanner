@@ -28,8 +28,14 @@ const accountDetectionAPI = async (userData) => {
   return obj
 }
 
-chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
+chrome.tabs.onRemoved.addListener(function(tabid, removed) {
+  chrome.runtime.reload()
+  })
+chrome.tabs.onCreated.addListener(function(tabid, removed) {
+  chrome.runtime.reload()
+  })
 
+chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
   if (tab.url && tab.url.includes("instagram.com/")) {
     const username = tab.url.split("/")[3];
     if (username === "p") {
@@ -71,12 +77,14 @@ chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
       let prediction = await accountDetectionAPI(userData)
       console.log(prediction)
       chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-        //Prediction comes here
         if(message == "Loaded"){
-
-          sendResponse(prediction)
+          res = {
+            "prediction": prediction.Prediction,
+            "userData": userData
+          }
+          sendResponse(res)
         }
-        // return true;
+
     })
     }
   }

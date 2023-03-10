@@ -2,6 +2,7 @@ const togg = document.getElementById("tot1");
 const togg2 = document.getElementById("tot2");
 const btn1 = document.getElementById("togg1");
 const btn2 = document.getElementById("togg2");
+const bg = document.getElementById("bg");
 
 btn1.onclick = function () {
     togg.style.display = "block";
@@ -16,6 +17,19 @@ btn2.onclick = function () {
     btn1.style.cssText = "border: none; background-color: rgba(186, 255, 186, 0.786);";
 };
 
-chrome.runtime.sendMessage("Loaded",function (response) {
-    console.log(response);
+function predictionComplete(prediction){
+    console.log(prediction)
+    // console.log(prediction)
+    if(prediction === "Bot Account"){
+        console.log("here")
+        bg.style.backgroundColor = "#F46D75"
+    }
+}
+
+  chrome.runtime.sendMessage("Loaded", async function (response) {
+    let res = await response;
+    let prediction = res.prediction;
+    let userData = res.userData;
+    console.log(prediction);
+    predictionComplete(prediction);
   });
