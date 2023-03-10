@@ -45,7 +45,8 @@ chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
       console.log(username);
       let response = await instagramAPICall(username);
       console.log(response);
-      let pfpLink = response.profile_pic_url;
+      let pfpURL = response.profile_pic_url
+      let pfp = pfpURL.includes("44884218_345707102882519_2446069589734326272_n.jpg") ? 0 : 1
       let fullName = response.full_name;
       let bio = response.biography;
       let externalURL = (response.external_url == null ? 0 : 1)
@@ -60,8 +61,9 @@ chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
       let fullNameTokens = fullName.split(" ").length;
       let bioLen = bio.length;
       let nameUsername = (fullName === username ? 1 : 0)
+      // console.log(pfpLink)
       userData = {
-        "profile pic": 0,
+        "profile pic": pfp,
         "nums/length username": numRatioUsername,
         "fullname words": fullNameTokens,
         "nums/length fullname": numRatioFullname,
