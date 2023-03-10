@@ -58,7 +58,7 @@ chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
       let bioLen = bio.length;
       let nameUsername = (fullName === username ? 1 : 0)
       userData = {
-        "profile pic": 1,
+        "profile pic": 0,
         "nums/length username": numRatioUsername,
         "fullname words": fullNameTokens,
         "nums/length fullname": numRatioFullname,
