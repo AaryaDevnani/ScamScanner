@@ -41,7 +41,6 @@ chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
     if (username === "p") {
       console.log("This is a post, please open the profile.");
     } else {
-      // console.log()
       console.log(username);
       let response = await instagramAPICall(username);
       console.log(response);
