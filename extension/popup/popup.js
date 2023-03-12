@@ -21,7 +21,6 @@ function predictionComplete(prediction){
     console.log(prediction)
     // console.log(prediction)
     if(prediction === "Bot Account"){
-        console.log("here")
         bg.style.backgroundColor = "#F46D75"
     }
 }
@@ -30,6 +29,8 @@ function predictionComplete(prediction){
     let res = await response;
     let prediction = res.prediction;
     let userData = res.userData;
-    console.log(prediction);
+    let username = res.username;
+    let fullname = res.fullname;
+    console.log(res)
     predictionComplete(prediction);
   });

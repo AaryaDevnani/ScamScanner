@@ -82,7 +82,10 @@ chrome.tabs.onUpdated.addListener(async (tabID, tab) => {
         if(message == "Loaded"){
           res = {
             "prediction": prediction.Prediction,
-            "userData": userData
+            "userData": userData,
+            "username": username,
+            "fullname":fullName
+
           }
           sendResponse(res)
         }
