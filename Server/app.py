@@ -52,27 +52,27 @@ def igbot():
     elif request.method == "OPTIONS":
         return _build_cors_preflight_response()
 
-@app.route('/incorrectprediction', methods=['POST','OPTIONS'])
-def incPred():
-    if request.method == "POST":
-        obj = json.loads(request.data)
-        # print(obj)
-        x = obj["x"]
-        y = obj["y"]["fake"]
-        print(y)
-        dfx = pd.DataFrame.from_dict([x])
-        platform = obj["Platform"]
-        if(platform == "Instagram"):
-            ig_model.fit(dfx,y)
-            with open('insta_model_pkl', 'wb') as files:
-                pickle.dump(ig_model, files)
-        elif(platform == "Twitter"):
-            twt_model.fit(dfx,y)
-            with open('model_pkl', 'wb') as files:
-                pickle.dump(twt_model, files)
-        return _corsify_actual_response(jsonify({"Result": "Model Has been fit"}))
-    elif request.method == "OPTIONS":
-        return _build_cors_preflight_response()  
+# @app.route('/incorrectprediction', methods=['POST','OPTIONS'])
+# def incPred():
+#     if request.method == "POST":
+#         obj = json.loads(request.data)
+#         # print(obj)
+#         x = obj["x"]
+#         y = obj["y"]["fake"]
+#         print(y)
+#         dfx = pd.DataFrame.from_dict([x])
+#         platform = obj["Platform"]
+#         if(platform == "Instagram"):
+#             ig_model.fit(dfx,y)
+#             with open('insta_model_pkl', 'wb') as files:
+#                 pickle.dump(ig_model, files)
+#         elif(platform == "Twitter"):
+#             twt_model.fit(dfx,y)
+#             with open('model_pkl', 'wb') as files:
+#                 pickle.dump(twt_model, files)
+#         return _corsify_actual_response(jsonify({"Result": "Model Has been fit"}))
+#     elif request.method == "OPTIONS":
+#         return _build_cors_preflight_response()  
 
 
 if __name__ == '__main__':
