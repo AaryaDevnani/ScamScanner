@@ -7,8 +7,8 @@
     },
     "content_scripts":[
       {
-        "matches":["https://www.instagram.com/*"],
-        "js":["./background/igScript.js"]
+        "matches":["https://twitter.com/*"],
+        "js":["./background/twtScript.js"]
       }
     ],
     "action": {
