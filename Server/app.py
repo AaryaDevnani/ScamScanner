@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, make_response
 import json
 import pickle
 import pandas as pd
+import requests
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -52,6 +53,25 @@ def igbot():
     elif request.method == "OPTIONS":
         return _build_cors_preflight_response()
 
+
+@app.route('/instagramUserData', methods=['GET', 'OPTIONS'])
+def instagramUserData():
+    if request.method == "GET":
+        username = request.args.get("username")
+        headers = {
+            "user-agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36",
+            "x-asbd-id": "198387",
+            "x-csrftoken": "VXLPx1sgRb8OCHg9c2NKXbfDndz913Yp",
+            "x-ig-app-id": "936619743392459",
+            "x-ig-www-claim": "0",
+        }
+        res = requests.get(
+            f"https://www.instagram.com/api/v1/users/web_profile_info/?username={username}", headers=headers)
+        # return (res.text)
+        return _corsify_actual_response(jsonify({"response":res.text}))
+    elif request.method == "OPTIONS":
+        return _build_cors_preflight_response()
 # @app.route('/incorrectprediction', methods=['POST','OPTIONS'])
 # def incPred():
 #     if request.method == "POST":

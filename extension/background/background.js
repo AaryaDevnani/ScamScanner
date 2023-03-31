@@ -1,23 +1,24 @@
 // function to call IG API
 const instagramAPICall = async (username) => {
   let obj;
-  let headers = new Headers({
-    "user-agent":
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36",
-    "x-asbd-id": "198387",
-    "x-csrftoken": "VXLPx1sgRb8OCHg9c2NKXbfDndz913Yp",
-    "x-ig-app-id": "936619743392459",
-    "x-ig-www-claim": "0",
-  });
+  // let headers = new Headers({
+  //   "user-agent":
+  //     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36",
+  //   "x-asbd-id": "198387",
+  //   "x-csrftoken": "VXLPx1sgRb8OCHg9c2NKXbfDndz913Yp",
+  //   "x-ig-app-id": "936619743392459",
+  //   "x-ig-www-claim": "0",
+  // });
   const res = await fetch(
-    `https://www.instagram.com/api/v1/users/web_profile_info/?username=${username}`,
+    `http://127.0.0.1:3000/instagramUserData?username=${username}`,
     {
-      method: "GET",
-      headers: headers,
+      method: "GET"
+      // headers: headers,
     }
   );
-  obj = await res.json();
-  return obj.data.user;
+  obj = await res.json()
+  re = JSON.parse(obj.response)
+  return re.data.user;
 };
 
 // function to format ig API results and message the extension with results
