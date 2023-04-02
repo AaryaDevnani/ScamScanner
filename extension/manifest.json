@@ -6,10 +6,6 @@
       "service_worker": "./background/background.js"
     },
     "content_scripts":[
-      {
-        "matches":["https://twitter.com/*"],
-        "js":["./background/twtScript.js"]
-      }
     ],
     "action": {
       "default_popup":"./popup/popup.html"

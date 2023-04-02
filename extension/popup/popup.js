@@ -31,11 +31,18 @@ function predictionComplete(prediction){
     let userData = res.userData;
     let username = res.username;
     let fullname = res.fullname;
+    let platform = res.platform
     console.log(res)
     predictionComplete(prediction);
+    if(platform == "Instagram"){
+        document.getElementById("followers").innerHTML = userData["#followers"];
+    }
+    else if(platform == "Twitter"){
+        document.getElementById("followers").innerHTML = userData["followers_count"];
+    }
     document.getElementById("username").innerHTML = username;
     document.getElementById("name").innerHTML = fullname;
-    document.getElementById("followers").innerHTML = userData["#followers"];
+
     if( prediction == "Bot Account"){
         document.getElementById("botOrNot").innerHTML = "This user is Fake";
     }

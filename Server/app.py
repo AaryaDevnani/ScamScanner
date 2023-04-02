@@ -3,9 +3,19 @@ import json
 import pickle
 import pandas as pd
 import requests
+import os
+from dotenv import load_dotenv
+import tweepy
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+
+load_dotenv()
+consumer_key = os.getenv('consumer_key')
+consumer_secret = os.getenv('consumer_secret')
+access_token = os.getenv('access_token')
+access_token_secret = os.getenv('access_token_secret')
+bearer_token = os.getenv('bearer_token')
 
 def _build_cors_preflight_response():
     response = make_response()
@@ -34,8 +44,11 @@ def twtbot():
             Prediction = "Bot Account"
         elif output == 0:
             Prediction = "Human"
-    print(Prediction)
-    return jsonify({"Prediction": Prediction})
+        print(Prediction)
+        return _corsify_actual_response(jsonify({"Prediction": Prediction}))
+    elif request.method == "OPTIONS":
+        return _build_cors_preflight_response()
+
 
 @app.route('/ig-bot', methods=['POST','OPTIONS'])
 def igbot():
@@ -72,6 +85,33 @@ def instagramUserData():
         return _corsify_actual_response(jsonify({"response":res.text}))
     elif request.method == "OPTIONS":
         return _build_cors_preflight_response()
+    
+@app.route('/twitterUserData', methods=['GET', 'OPTIONS'])
+def twitterUserData():
+    if request.method == "GET":
+        username = request.args.get("username")
+        auth = tweepy.OAuthHandler(consumer_key=consumer_key,
+                           consumer_secret=consumer_secret)
+        auth.set_access_token(access_token,
+                            access_token_secret)
+        api = tweepy.API(auth)
+
+        # Client
+        client = tweepy.Client(bearer_token, consumer_key=consumer_key, consumer_secret=consumer_secret,
+                            access_token=access_token, access_token_secret=access_token_secret)
+
+        # To get followers of a user
+        def get_user(username):
+            return api.get_user(screen_name=username, include_entities=False)
+        # followers = []
+        # for follower in tweepy.Cursor(api.get_followers, screen_name=user.screen_name).items(200):
+        #     followers.append(follower)
+
+        userDetails = get_user(username)._json
+        return _corsify_actual_response(jsonify({"response":userDetails}))
+    elif request.method == "OPTIONS":
+        return _build_cors_preflight_response()
+
 # @app.route('/incorrectprediction', methods=['POST','OPTIONS'])
 # def incPred():
 #     if request.method == "POST":
