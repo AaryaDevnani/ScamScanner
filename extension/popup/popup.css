@@ -1,13 +1,19 @@
 .container{
     height: fit-content;
     width: 270px;
-    background-color: rgba(186, 255, 186, 0.786);
+    background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
     margin: 10px;
 }
 .comName{
     color: black;
     text-align: center;
     font-size: 20px;
+    display: block;
+    margin-top: -20px;
 }
 .detailsContainer{
     background-color: aliceblue;
@@ -36,31 +42,14 @@
 }
 
 .dataNotFake{
-    font-size: 17px;
+    font-size: 19px;
     color: rgb(14, 150, 104);
     text-align: center;
-    margin-left: -10px;
+    margin-top: 0px;
+    margin-left: -10px !important;
 }
-.dataFake{
-    font-size: 17px;
-    color: rgb(150, 14, 14);
-    text-align: center;   
-    margin-left: -10px;
-}
-.dataFake2{
-    font-size: 16px;
-    color: rgb(150, 14, 14);
-    text-align: center;   
-    margin-left: -10px;
-}
-.accuracy{
-    font-size: 13px;
-    color: rgb(14, 150, 84);
-    margin-top: -15px;
-    text-align: right;
-    margin-right: 10px;
-    margin-left: -10px;
-}
+
+
 .toggle1{
     font-size: 17px;
     width: 124px;
@@ -86,4 +75,30 @@
 }
 #tot2{
     display: none; 
+}
+.refreshBtn{
+    background-color: transparent;
+    border: none;
+    margin-right: 0;
+    margin-left: auto;
+    display: block;
+}
+.refreshBtn:hover{
+    cursor: pointer;
+}
+#iIcon{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width:  55%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#tIcon{
+    margin-right: auto;
+    margin-left: auto;
+    display: none;
+    width: 55%;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
