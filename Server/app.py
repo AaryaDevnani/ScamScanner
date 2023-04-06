@@ -25,23 +25,32 @@ def _corsify_actual_response(response):
 def index():
     return jsonify({"message": "pong"})
 
-@app.route('/twt-bot', methods=['GET','OPTIONS'])
+@app.route('/bot', methods=['GET','OPTIONS'])
 def twtbot():
     if request.method == "GET":
+        platform = request.args.get("platform")
+        print(platform)
         username = request.args.get("username")
-        res = getUserData.getUserData("twitter",username)
+        res = getUserData.getUserData(platform,username)
         df = pd.DataFrame.from_dict([res["userData"]])
-        output = twt_model.predict(df)
+        output = ""
+        if(platform == "twitter"):
+            output = twt_model.predict(df)
+        elif(platform =="instagram"):
+            output =  ig_model.predict(df)
         if(output == 1):
             Prediction = "Bot Account"
         elif output == 0:
             Prediction = "Human"
+        
         finalOutput = {
             "Prediction": Prediction,
             "userData":res["userData"],
             "username":username,
-            "fullname":res["fullname"]
+            "fullname":res["fullname"],
+            "platform":platform
         }
+        print(finalOutput)
         return _corsify_actual_response(jsonify(finalOutput))
     elif request.method == "OPTIONS":
         return _build_cors_preflight_response()

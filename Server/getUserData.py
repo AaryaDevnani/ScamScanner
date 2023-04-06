@@ -15,17 +15,20 @@ access_token_secret = os.getenv('access_token_secret')
 bearer_token = os.getenv('bearer_token')
 
 def getInstagramUserData(username):
+    url = f"https://www.instagram.com/api/v1/users/web_profile_info/?username={username}"
+
+    payload={}
     headers = {
-        "user-agent":
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36",
-        "x-asbd-id": "198387",
-        "x-csrftoken": "VXLPx1sgRb8OCHg9c2NKXbfDndz913Yp",
-        "x-ig-app-id": "936619743392459",
-        "x-ig-www-claim": "0",
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36',
+    'x-asbd-id': '198387',
+    'x-csrftoken': 'XLPx1sgRb8OCHg9c2NKXbfDndz913Yp',
+    'x-ig-app-id': '936619743392459',
+    'x-ig-www-claim': '0',
+    'Cookie': 'csrftoken=2O2lTdAEChP9M4HebjdRsO6sH0L2aleB; ig_did=6AAAA919-A0BA-4322-80A6-43BB67EC3939; ig_nrcb=1; mid=ZAdiDwAEAAGcjuHJXikvLXdN3fJa'
     }
-    res = requests.get(
-        f"https://www.instagram.com/api/v1/users/web_profile_info/?username={username}", headers=headers)
-    print(res.text)
+
+    res = requests.request("GET", url, headers=headers, data=payload)
+
     respDict = json.loads(res.text)
     userData = respDict['data']['user']
     pfpUrl = userData['profile_pic_url']
@@ -73,7 +76,7 @@ def getTwitterUserData(username):
     def get_user(username):
         return api.get_user(screen_name=username, include_entities=False)
     userData = get_user(username)._json
-    print(userData)
+    # print(userData)
     created_at = datetime.timestamp(parse(userData["created_at"]))
     today = datetime.timestamp(datetime.now())
     difference = (today-created_at)/86400
@@ -101,6 +104,7 @@ def getTwitterUserData(username):
 
 
 def getUserData(platform, username):
+    print(platform,username)
     if(platform == "instagram"):
         userData = getInstagramUserData(username)
     elif(platform =="twitter"):
