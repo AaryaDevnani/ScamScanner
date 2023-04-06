@@ -6,19 +6,8 @@ const bg = document.getElementById("bg");
 const nf = document.getElementById("notFake");
 const ii = document.getElementById("iIcon");
 const ti = document.getElementById("tIcon");
+const refreshButton = document.getElementById("refreshBtn");
 
-// btn1.onclick = function () {
-//     togg.style.display = "block";
-//     togg2.style.display = "none";
-//     btn1.style.cssText = "background-color: rgb(115, 172, 115); border-color: rgb(115, 172, 115); border-style: none;";
-//     btn2.style.cssText = "border: none; background-color: rgba(186, 255, 186, 0.786);";
-// };
-// btn2.onclick = function () {
-//     togg.style.display = "none";
-//     togg2.style.display = "block";
-//     btn2.style.cssText = "background-color: rgb(115, 172, 115); border-color: rgb(115, 172, 115); border-style: none;";
-//     btn1.style.cssText = "border: none; background-color: rgba(186, 255, 186, 0.786);";
-// };
 
 function predictionComplete(prediction){
     console.log(prediction)
