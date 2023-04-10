@@ -56,28 +56,6 @@ def twtbot():
         return _build_cors_preflight_response()
 
 
-@app.route('/ig-bot', methods=['GET','OPTIONS'])
-def igbot():
-    if request.method == "GET":
-        username = request.args.get("username")
-        res = getUserData.getUserData("instagram",username)
-        df = pd.DataFrame.from_dict([res["userData"]])
-        output = ig_model.predict(df)
-        if(output == 1):
-            Prediction = "Bot Account"
-        elif output == 0:
-            Prediction = "Human"
-        finalOutput = {
-            "Prediction": Prediction,
-            "userData":res["userData"],
-            "username":username,
-            "fullname":res["fullname"]
-        }
-        return _corsify_actual_response(jsonify(finalOutput))
-    elif request.method == "OPTIONS":
-        return _build_cors_preflight_response()
-
-
 if __name__ == '__main__':
     with open('model_pkl', 'rb') as f:
         twt_model = pickle.load(f)
