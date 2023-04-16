@@ -12,7 +12,6 @@ let username = res.username;
 let fullname = res.fullname;
 let platform = res.platform
 console.log(res)
-// predictionComplete(prediction);
 if(platform == "instagram"){
     document.getElementById("followers").innerHTML = userData["#followers"];
     bg.style.background = "#f09433";
