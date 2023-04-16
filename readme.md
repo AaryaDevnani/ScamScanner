@@ -49,17 +49,17 @@ In order to set up the project:
 <ul>
 <li>Real Twitter Account:</l1>
 <p align="center">
- <img src="./images/RealTwitter.png">
+ <img src="./Images/RealTwitter.png">
 </p>
 <li>Fake Twitter Account:</li>
 <p align="center">
- <img src="./images/FakeTwitter.png">
+ <img src="./Images/FakeTwitter.png">
 </p>
 <li>Real Instagram Account:</li>
 <p align="center">
- <img src="./images/RealIG.png">
+ <img src="./Images/RealIG.png">
 </p>
 <li>Fake Instagram Account:</li>
 <p align="center">
- <img src="./images/FakeIG.png">
+ <img src="./Images/FakeIG.png">
 </p>
