@@ -27,7 +27,7 @@ The trained models have been stored as pickle files and can be found [here](http
 
 In order to set up the project:
 
-1. Download the models from the Google Drive link.
+1. Download the models from the [Google Drive link](https://drive.google.com/drive/folders/18Fd__baOE8ZyId5DZiovFITkZJqNaKjF?usp=sharing).
 2. Put the downloaded pickle files into the Server folder.
 3. Load the browser extension:
 
