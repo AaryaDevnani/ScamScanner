@@ -57,7 +57,7 @@ def twtbot():
 
 
 if __name__ == '__main__':
-    with open('model_pkl', 'rb') as f:
+    with open('twitter_model_pkl', 'rb') as f:
         twt_model = pickle.load(f)
     with open('insta_model_pkl', 'rb') as i:
         ig_model = pickle.load(i)
