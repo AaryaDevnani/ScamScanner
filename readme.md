@@ -47,7 +47,7 @@ In order to set up the project:
 
 ## Results
 <ul>
-<li>Real Twitter Account:</l1>
+<b><li>Real Twitter Account:</l1>
 <p align="center">
  <img src="./Images/RealTwitter.png">
 </p>
@@ -63,3 +63,5 @@ In order to set up the project:
 <p align="center">
  <img src="./Images/FakeIG.png">
 </p>
+</b>
+</ul>
