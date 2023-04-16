@@ -9,10 +9,10 @@ The code is split across 4 folders:
 1. **Data**: Contains the datasets for the models.
 2. **Extension**: Contains the code of the browser extension.
 3. **Models**: Contains the files used to create and save the trained models.
-4. **Server**: Contains a Flask server which is used to generate predictions and use with the extension.
+4. **Server**: Contains a Flask server which is used to generate predictions and is used with the extension.
 
 ## Models
-The models have been trained on the Random Forest Algorithm. I have tested 5 models using cross-validation. They are:
+The models have been trained on the Random Forest Algorithm. We have tested 5 models using cross-validation. They are:
 
 1. Random Forest Classifier
 2. Gradient Boosting Classifier
@@ -20,9 +20,8 @@ The models have been trained on the Random Forest Algorithm. I have tested 5 mod
 4. Support Vector Classifier
 5. Gaussian Naive Bayes Classifier
 
-The Random Forest model gave me the best results so I went ahead with that.
-
-The trained models have been stored as pickle files and can be found in [here](google.com).
+The Random Forest model gave us the best results so we went ahead with that.
+The trained models have been stored as pickle files and can be found [here](https://drive.google.com/drive/folders/18Fd__baOE8ZyId5DZiovFITkZJqNaKjF?usp=sharing).
 
 ## Setup
 
@@ -45,3 +44,22 @@ In order to set up the project:
 
 5. Now you can start the server by running the app.py file.
 6. Once the server is running, you can open an Instagram or Twitter account and click on the Chrome extension to test whether it is a fake account or not.
+
+## Results
+<ul>
+<li>Real Twitter Account:</l1>
+<p align="center">
+ <img src="./images/RealTwitter.png">
+</p>
+<li>Fake Twitter Account:</li>
+<p align="center">
+ <img src="./images/FakeTwitter.png">
+</p>
+<li>Real Instagram Account:</li>
+<p align="center">
+ <img src="./images/RealIG.png">
+</p>
+<li>Fake Instagram Account:</li>
+<p align="center">
+ <img src="./images/FakeIG.png">
+</p>
